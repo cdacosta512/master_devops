@@ -3,6 +3,9 @@ from redis import Redis, RedisError
 import os
 import socket
 import pickledb
+from datetime import datetime
+
+
 
 # Connect to Redis
 redis = Redis(host="redis", port=6379,
@@ -49,6 +52,10 @@ def hello():
            "Num visits: {visits}\n"
     return html.format(name=os.getenv("NAME", "world"),
                        hostname=socket.gethostname(), visits=visits)
+
+def home():
+    date = datetime.now()
+    return str(date)
 
 
 if __name__ == "__main__":
